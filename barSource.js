@@ -19,11 +19,20 @@ function renderBarChart() {
 	    .orient("left")
 	    .ticks(15);
 
+	var tip = d3.tip()
+  		.attr('class', 'd3-tip')
+  		.offset([-10, 0])
+  		.html(function(d) {
+    		return "<strong>Breweries:</strong> <span style='color:red'>" + d.breweries + "</span>";
+  		})
+
 	var svg = d3.select("body").append("svg")
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom)
 	  	.append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	svg.call(tip);
 
 	d3.tsv("eastBreweries.txt", type, function(error, data) {
 	  	x.domain(data.map(function(d) { return d.state; }));
@@ -45,13 +54,15 @@ function renderBarChart() {
 	      .text("# of Breweries");
 
 	  svg.selectAll(".bar")
-	      .data(data)
-	    .enter().append("rect")
+       	  .data(data)
+      	.enter().append("rect")
 	      .attr("class", "bar")
 	      .attr("x", function(d) { return x(d.state); })
 	      .attr("width", x.rangeBand())
 	      .attr("y", function(d) { return y(d.breweries); })
-	      .attr("height", function(d) { return height - y(d.breweries); });
+	      .attr("height", function(d) { return height - y(d.breweries); })
+	      .on('mouseover', tip.show)
+	      .on('mouseout', tip.hide)
 
 	});
 

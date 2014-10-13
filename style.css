@@ -1,0 +1,38 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #ADD8E6;
+}
+
+#header {
+	color: blue;
+	font-weight: bold;
+	font-family: 'Pacifico', cursive;
+	text-align: center;
+	font-size: 50px;
+}
+
+.bar {
+  fill: blue;
+}
+
+.bar:hover {
+  fill: red;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}

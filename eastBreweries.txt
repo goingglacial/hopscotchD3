@@ -1,1 +1,1 @@
-State	BreweriesConnecticut	23Delaware	10DC	9Maine	47Maryland	34Massachusetts	57New Hampshire	22New Jersey	26New York	165North Carolina	91Pennsylvania	108Rhode Island	8Vermont	29Virginia	61West Virginia	7
+state	breweriesCT	23DE	10DC	9ME	47MD	34MA	57NH	22NJ	26NY	165NC	91PA	108RI	8VT	29VA	61WV	7

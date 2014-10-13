@@ -25,12 +25,9 @@ function renderBarChart() {
 	  	.append("g")
 	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	d3.csv("eastBreweries.csv", type, function(error, data) {
-		return {
-			state = d.
-		}
+	d3.tsv("eastBreweries.txt", type, function(error, data) {
 	  	x.domain(data.map(function(d) { return d.state; }));
-	  	y.domain([0, d3.max(data, function(d) { return d.number; })]);
+	  	y.domain([0, d3.max(data, function(d) { return d.breweries; })]);
 
 	  svg.append("g")
 	      .attr("class", "x axis")
@@ -53,13 +50,13 @@ function renderBarChart() {
 	      .attr("class", "bar")
 	      .attr("x", function(d) { return x(d.state); })
 	      .attr("width", x.rangeBand())
-	      .attr("y", function(d) { return y(d.number); })
-	      .attr("height", function(d) { return height - y(d.number; });
+	      .attr("y", function(d) { return y(d.breweries); })
+	      .attr("height", function(d) { return height - y(d.breweries); });
 
 	});
 
 	function type(d) {
-	  d.number = +d.number;
+	  d.breweries = +d.breweries;
 	  return d;
 	}
 }
